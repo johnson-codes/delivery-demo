@@ -62,6 +62,11 @@
   .map-link { margin: 0.75rem 0 0; }
   .map-link a { color: var(--ink); font-weight: 600; }
   .map-link a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  @media (max-width: 40rem) {
+    html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 7rem); }
+    .tabs-inner { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; overflow: visible; }
+    .tabs a, .tabs a:first-child { padding: 0.7rem 0.25rem 0.55rem; text-align: center; }
+  }
   @media (max-width: 30rem) {
     .map { aspect-ratio: 4 / 5; }
   }
@@ -75,54 +80,54 @@
 </header>
 <nav class="tabs" aria-label="Warehouses">
   <div class="tabs-inner wrap">
-      <a href="#wh-1" aria-current="true">Warehouse 1</a>
-      <a href="#wh-2">Warehouse 2</a>
-      <a href="#wh-3">Warehouse 3</a>
-      <a href="#wh-4">Warehouse 4</a>
-      <a href="#wh-5">Warehouse 5</a>
-      <a href="#wh-6">Warehouse 6</a>
+      <a href="#vancouver" aria-current="true">Vancouver</a>
+      <a href="#calgary">Calgary</a>
+      <a href="#edmonton">Edmonton</a>
+      <a href="#saskatoon">Saskatoon</a>
+      <a href="#winnipeg">Winnipeg</a>
+      <a href="#hamilton">Hamilton</a>
   </div>
 </nav>
 <main class="wrap">
-  <section class="wh" id="wh-1" aria-labelledby="wh-1-title">
-    <h2 id="wh-1-title">Warehouse 1</h2>
+  <section class="wh" id="vancouver" aria-labelledby="vancouver-title">
+    <h2 id="vancouver-title">Vancouver, BC</h2>
     <div class="map">
-      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Warehouse 1 delivery zones map" allowfullscreen></iframe>
+      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Vancouver, BC delivery zones map" allowfullscreen></iframe>
     </div>
     <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs" target="_blank" rel="noopener">Open this map full screen</a></p>
   </section>
-  <section class="wh" id="wh-2" aria-labelledby="wh-2-title">
-    <h2 id="wh-2-title">Warehouse 2</h2>
+  <section class="wh" id="calgary" aria-labelledby="calgary-title">
+    <h2 id="calgary-title">Calgary, AB</h2>
     <div class="map">
-      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Warehouse 2 delivery zones map" loading="lazy" allowfullscreen></iframe>
+      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Calgary, AB delivery zones map" loading="lazy" allowfullscreen></iframe>
     </div>
     <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs" target="_blank" rel="noopener">Open this map full screen</a></p>
   </section>
-  <section class="wh" id="wh-3" aria-labelledby="wh-3-title">
-    <h2 id="wh-3-title">Warehouse 3</h2>
+  <section class="wh" id="edmonton" aria-labelledby="edmonton-title">
+    <h2 id="edmonton-title">Edmonton, AB</h2>
     <div class="map">
-      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Warehouse 3 delivery zones map" loading="lazy" allowfullscreen></iframe>
+      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Edmonton, AB delivery zones map" loading="lazy" allowfullscreen></iframe>
     </div>
     <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs" target="_blank" rel="noopener">Open this map full screen</a></p>
   </section>
-  <section class="wh" id="wh-4" aria-labelledby="wh-4-title">
-    <h2 id="wh-4-title">Warehouse 4</h2>
+  <section class="wh" id="saskatoon" aria-labelledby="saskatoon-title">
+    <h2 id="saskatoon-title">Saskatoon, SK</h2>
     <div class="map">
-      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Warehouse 4 delivery zones map" loading="lazy" allowfullscreen></iframe>
+      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Saskatoon, SK delivery zones map" loading="lazy" allowfullscreen></iframe>
     </div>
     <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs" target="_blank" rel="noopener">Open this map full screen</a></p>
   </section>
-  <section class="wh" id="wh-5" aria-labelledby="wh-5-title">
-    <h2 id="wh-5-title">Warehouse 5</h2>
+  <section class="wh" id="winnipeg" aria-labelledby="winnipeg-title">
+    <h2 id="winnipeg-title">Winnipeg, MB</h2>
     <div class="map">
-      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Warehouse 5 delivery zones map" loading="lazy" allowfullscreen></iframe>
+      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Winnipeg, MB delivery zones map" loading="lazy" allowfullscreen></iframe>
     </div>
     <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs" target="_blank" rel="noopener">Open this map full screen</a></p>
   </section>
-  <section class="wh" id="wh-6" aria-labelledby="wh-6-title">
-    <h2 id="wh-6-title">Warehouse 6</h2>
+  <section class="wh" id="hamilton" aria-labelledby="hamilton-title">
+    <h2 id="hamilton-title">Hamilton, ON</h2>
     <div class="map">
-      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Warehouse 6 delivery zones map" loading="lazy" allowfullscreen></iframe>
+      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Hamilton, ON delivery zones map" loading="lazy" allowfullscreen></iframe>
     </div>
     <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs" target="_blank" rel="noopener">Open this map full screen</a></p>
   </section>
