@@ -62,10 +62,14 @@
   .map-link { margin: 0.75rem 0 0; }
   .map-link a { color: var(--ink); font-weight: 600; }
   .map-link a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-  @media (max-width: 40rem) {
+  @media (max-width: 62rem) {
     html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 7rem); }
     .tabs-inner { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; overflow: visible; }
-    .tabs a, .tabs a:first-child { padding: 0.7rem 0.25rem 0.55rem; text-align: center; }
+    .tabs a, .tabs a:first-child { padding: 0.6rem 0.25rem 0.45rem; text-align: center; white-space: normal; font-size: 0.9375rem; line-height: 1.3; }
+  }
+  @media (max-width: 34rem) {
+    html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 9.5rem); }
+    .tabs-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 30rem) {
     .map { aspect-ratio: 4 / 5; }
@@ -80,12 +84,12 @@
 </header>
 <nav class="tabs" aria-label="Warehouses">
   <div class="tabs-inner wrap">
-      <a href="#vancouver" aria-current="true">Vancouver</a>
-      <a href="#calgary">Calgary</a>
-      <a href="#edmonton">Edmonton</a>
-      <a href="#saskatoon">Saskatoon</a>
-      <a href="#winnipeg">Winnipeg</a>
-      <a href="#hamilton">Hamilton</a>
+      <a href="#vancouver" aria-current="true">BC</a>
+      <a href="#edmonton">Alberta (Edmonton)</a>
+      <a href="#calgary">Alberta (Calgary)</a>
+      <a href="#saskatoon">Saskatchewan</a>
+      <a href="#winnipeg">Manitoba</a>
+      <a href="#hamilton">Ontario</a>
   </div>
 </nav>
 <main class="wrap">
@@ -96,19 +100,19 @@
     </div>
     <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=1-IBoFM7AkpRa558b6DrRTmA0KzzHoEw" target="_blank" rel="noopener">Open this map full screen</a></p>
   </section>
-  <section class="wh" id="calgary" aria-labelledby="calgary-title">
-    <h2 id="calgary-title">Calgary, AB</h2>
-    <div class="map">
-      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Calgary, AB delivery zones map" loading="lazy" allowfullscreen></iframe>
-    </div>
-    <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs" target="_blank" rel="noopener">Open this map full screen</a></p>
-  </section>
   <section class="wh" id="edmonton" aria-labelledby="edmonton-title">
     <h2 id="edmonton-title">Edmonton, AB</h2>
     <div class="map">
       <iframe src="https://www.google.com/maps/d/embed?mid=12v3mOasOkD1YzllFwvnh0ATCol5NgHM&amp;ehbc=2E312F" title="Edmonton, AB delivery zones map" loading="lazy" allowfullscreen></iframe>
     </div>
     <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=12v3mOasOkD1YzllFwvnh0ATCol5NgHM" target="_blank" rel="noopener">Open this map full screen</a></p>
+  </section>
+  <section class="wh" id="calgary" aria-labelledby="calgary-title">
+    <h2 id="calgary-title">Calgary, AB</h2>
+    <div class="map">
+      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Calgary, AB delivery zones map" loading="lazy" allowfullscreen></iframe>
+    </div>
+    <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs" target="_blank" rel="noopener">Open this map full screen</a></p>
   </section>
   <section class="wh" id="saskatoon" aria-labelledby="saskatoon-title">
     <h2 id="saskatoon-title">Saskatoon, SK</h2>
@@ -157,6 +161,9 @@
     }, { rootMargin: '-40% 0px -55% 0px' });
     document.querySelectorAll('.wh').forEach(function (s) { io.observe(s); });
   }
+  var bar = document.querySelector('.tabs');
+  function pad() { document.documentElement.style.scrollPaddingTop = 'calc(env(safe-area-inset-top, 0px) + ' + (bar.offsetHeight + 12) + 'px)'; }
+  pad(); window.addEventListener('resize', pad);
   if (location.hash) setActive(location.hash.slice(1));
 })();
 </script>
