@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>APT Calgary delivery zones</title>
+<title>APT Auto Parts delivery zones</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #E9EEF6; --ink: #16213E; --muted: #55607A; --accent: #D7263D;
+    --gutter: clamp(1.25rem, 5vw, 3rem);
     box-sizing: border-box;
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
@@ -19,19 +20,42 @@
   }
   :root[data-theme="dark"] { --bg: #0F1626; --ink: #E9EEF6; --muted: #9AA6BF; --accent: #FF5C6E; }
   *, *::before, *::after { box-sizing: inherit; }
-  html { height: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
+  html { height: 100%; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 4.5rem); }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
   body {
     margin: 0; min-height: 100%;
     background: var(--bg); color: var(--ink);
     font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     font-size: 1.0625rem; line-height: 1.5;
   }
-  main { max-width: 60rem; margin: 0 auto; padding: clamp(1.5rem, 5vw, 4rem) clamp(1.25rem, 5vw, 3rem); }
+  .wrap { max-width: 60rem; margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+
+  .top { padding-top: clamp(1.5rem, 5vw, 4rem); padding-bottom: 1.5rem; }
   .brand { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.01em; margin: 0 0 clamp(2rem, 6vh, 3.5rem); }
   h1 { font-weight: 800; font-size: clamp(2rem, 5vw, 3.25rem); letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 0.75rem; }
-  .intro { color: var(--muted); margin: 0 0 1.5rem; max-width: 52ch; }
+  .intro { color: var(--muted); margin: 0; max-width: 52ch; }
+
+  .tabs {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+    background: var(--bg); box-shadow: inset 0 -2px 0 var(--ink);
+  }
+  .tabs-inner { display: flex; gap: 0.25rem; overflow-x: auto; scrollbar-width: none; }
+  .tabs-inner::-webkit-scrollbar { display: none; }
+  .tabs a {
+    flex: 0 0 auto; white-space: nowrap; text-decoration: none;
+    color: var(--muted); font-weight: 600;
+    padding: 0.9rem 0.9rem 0.75rem; border-bottom: 4px solid transparent;
+  }
+  .tabs a:first-child { padding-left: 0; }
+  .tabs a:hover { color: var(--ink); }
+  .tabs a[aria-current="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+  .tabs a:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+
+  main { padding-bottom: clamp(3rem, 8vh, 5rem); }
+  .wh { padding-top: clamp(2.5rem, 6vh, 3.5rem); }
+  .wh h2 { font-weight: 800; font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 1rem; }
   .map {
-    position: relative; width: 100%; aspect-ratio: 16 / 10; max-height: 78vh;
+    position: relative; width: 100%; aspect-ratio: 16 / 10; max-height: 70vh;
     border: 2px solid var(--ink); border-radius: 12px; overflow: hidden; background: var(--bg);
   }
   .map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
@@ -44,14 +68,92 @@
 </style>
 </head>
 <body>
-<main>
-  <p class="brand">APT Calgary</p>
+<header class="top wrap">
+  <p class="brand">APT Auto Parts</p>
   <h1>Delivery zones</h1>
-  <p class="intro">Tap a zone on the map to see its delivery days, order cut-off and delivery window.</p>
-  <div class="map">
-    <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="APT Calgary delivery zones map" allowfullscreen></iframe>
+  <p class="intro">Choose your warehouse, then tap a zone on its map to see delivery days, order cut-off and delivery window.</p>
+</header>
+<nav class="tabs" aria-label="Warehouses">
+  <div class="tabs-inner wrap">
+      <a href="#wh-1" aria-current="true">Warehouse 1</a>
+      <a href="#wh-2">Warehouse 2</a>
+      <a href="#wh-3">Warehouse 3</a>
+      <a href="#wh-4">Warehouse 4</a>
+      <a href="#wh-5">Warehouse 5</a>
+      <a href="#wh-6">Warehouse 6</a>
   </div>
-  <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs" target="_blank" rel="noopener">Open the map full screen</a></p>
+</nav>
+<main class="wrap">
+  <section class="wh" id="wh-1" aria-labelledby="wh-1-title">
+    <h2 id="wh-1-title">Warehouse 1</h2>
+    <div class="map">
+      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Warehouse 1 delivery zones map" allowfullscreen></iframe>
+    </div>
+    <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs" target="_blank" rel="noopener">Open this map full screen</a></p>
+  </section>
+  <section class="wh" id="wh-2" aria-labelledby="wh-2-title">
+    <h2 id="wh-2-title">Warehouse 2</h2>
+    <div class="map">
+      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Warehouse 2 delivery zones map" loading="lazy" allowfullscreen></iframe>
+    </div>
+    <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs" target="_blank" rel="noopener">Open this map full screen</a></p>
+  </section>
+  <section class="wh" id="wh-3" aria-labelledby="wh-3-title">
+    <h2 id="wh-3-title">Warehouse 3</h2>
+    <div class="map">
+      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Warehouse 3 delivery zones map" loading="lazy" allowfullscreen></iframe>
+    </div>
+    <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs" target="_blank" rel="noopener">Open this map full screen</a></p>
+  </section>
+  <section class="wh" id="wh-4" aria-labelledby="wh-4-title">
+    <h2 id="wh-4-title">Warehouse 4</h2>
+    <div class="map">
+      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Warehouse 4 delivery zones map" loading="lazy" allowfullscreen></iframe>
+    </div>
+    <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs" target="_blank" rel="noopener">Open this map full screen</a></p>
+  </section>
+  <section class="wh" id="wh-5" aria-labelledby="wh-5-title">
+    <h2 id="wh-5-title">Warehouse 5</h2>
+    <div class="map">
+      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Warehouse 5 delivery zones map" loading="lazy" allowfullscreen></iframe>
+    </div>
+    <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs" target="_blank" rel="noopener">Open this map full screen</a></p>
+  </section>
+  <section class="wh" id="wh-6" aria-labelledby="wh-6-title">
+    <h2 id="wh-6-title">Warehouse 6</h2>
+    <div class="map">
+      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Warehouse 6 delivery zones map" loading="lazy" allowfullscreen></iframe>
+    </div>
+    <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs" target="_blank" rel="noopener">Open this map full screen</a></p>
+  </section>
 </main>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.tabs a'));
+  var strip = document.querySelector('.tabs-inner');
+  function setActive(id) {
+    links.forEach(function (a) {
+      var on = a.getAttribute('href') === '#' + id;
+      if (on) {
+        a.setAttribute('aria-current', 'true');
+        var l = a.offsetLeft, r = l + a.offsetWidth;
+        if (l < strip.scrollLeft || r > strip.scrollLeft + strip.clientWidth) strip.scrollTo({ left: l - 16 });
+      } else {
+        a.removeAttribute('aria-current');
+      }
+    });
+  }
+  links.forEach(function (a) {
+    a.addEventListener('click', function () { setActive(a.getAttribute('href').slice(1)); });
+  });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    document.querySelectorAll('.wh').forEach(function (s) { io.observe(s); });
+  }
+  if (location.hash) setActive(location.hash.slice(1));
+})();
+</script>
 </body>
 </html>
