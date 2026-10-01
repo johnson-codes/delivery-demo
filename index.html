@@ -3,28 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Holiday sale countdown</title>
+<title>APT Calgary delivery zones</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #E9EEF6; --ink: #16213E; --muted: #55607A;
-    --accent: #D7263D; --accent-ink: #FFFFFF;
+    --bg: #E9EEF6; --ink: #16213E; --muted: #55607A; --accent: #D7263D;
     box-sizing: border-box;
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #0F1626; --ink: #E9EEF6; --muted: #9AA6BF;
-      --accent: #FF5C6E; --accent-ink: #0F1626;
-    }
+    :root:not([data-theme="light"]) { --bg: #0F1626; --ink: #E9EEF6; --muted: #9AA6BF; --accent: #FF5C6E; }
   }
-  :root[data-theme="dark"] {
-    --bg: #0F1626; --ink: #E9EEF6; --muted: #9AA6BF;
-    --accent: #FF5C6E; --accent-ink: #0F1626;
-  }
+  :root[data-theme="dark"] { --bg: #0F1626; --ink: #E9EEF6; --muted: #9AA6BF; --accent: #FF5C6E; }
   *, *::before, *::after { box-sizing: inherit; }
   html { height: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
   body {
@@ -34,92 +27,31 @@
     font-size: 1.0625rem; line-height: 1.5;
   }
   main { max-width: 60rem; margin: 0 auto; padding: clamp(1.5rem, 5vw, 4rem) clamp(1.25rem, 5vw, 3rem); }
-  .brand { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.01em; margin: 0 0 clamp(3rem, 10vh, 6rem); }
-  h1 { font-weight: 600; font-size: clamp(1.25rem, 2.5vw, 1.6rem); color: var(--muted); margin: 0 0 0.75rem; }
-  .clock {
-    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(0.5rem, 2vw, 1.5rem);
-    border-top: 2px solid var(--ink); padding-top: 1rem; margin: 0 0 2.5rem;
-  }
-  .unit { display: flex; flex-direction: column; }
-  .num {
-    font-weight: 800; font-size: clamp(3rem, 13vw, 9rem); line-height: 0.9;
-    letter-spacing: -0.04em; font-variant-numeric: tabular-nums;
-  }
-  .label { color: var(--muted); font-size: 0.95rem; margin-top: 0.5rem; }
-  .offer { font-size: clamp(1.25rem, 2.4vw, 1.75rem); font-weight: 600; line-height: 1.25; max-width: 32ch; margin: 0 0 1.75rem; }
-  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
-  .btn {
-    display: inline-block; background: var(--accent); color: var(--accent-ink);
-    text-decoration: none; font-weight: 600; padding: 0.85rem 1.5rem; border-radius: 999px;
-  }
-  .btn:hover { filter: brightness(1.08); }
-  .btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
-  .note { color: var(--muted); margin: 0; max-width: 40ch; }
-  .zones { margin-top: clamp(3.5rem, 9vh, 6rem); }
-  .zones h2 { font-weight: 800; font-size: clamp(1.6rem, 3.2vw, 2.25rem); letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 0.5rem; }
-  .zones p { color: var(--muted); margin: 0 0 1.25rem; max-width: 52ch; }
+  .brand { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.01em; margin: 0 0 clamp(2rem, 6vh, 3.5rem); }
+  h1 { font-weight: 800; font-size: clamp(2rem, 5vw, 3.25rem); letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 0.75rem; }
+  .intro { color: var(--muted); margin: 0 0 1.5rem; max-width: 52ch; }
   .map {
-    position: relative; width: 100%; aspect-ratio: 16 / 10; max-height: 75vh;
+    position: relative; width: 100%; aspect-ratio: 16 / 10; max-height: 78vh;
     border: 2px solid var(--ink); border-radius: 12px; overflow: hidden; background: var(--bg);
   }
   .map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-  .zones .map-link { margin: 0.75rem 0 0; }
-  .zones a { color: var(--ink); font-weight: 600; }
-  .zones a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .map-link { margin: 0.75rem 0 0; }
+  .map-link a { color: var(--ink); font-weight: 600; }
+  .map-link a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
   @media (max-width: 30rem) {
-    .clock { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 1.5rem; }
-    .num { font-size: clamp(3.5rem, 22vw, 6rem); }
     .map { aspect-ratio: 4 / 5; }
   }
 </style>
 </head>
 <body>
 <main>
-  <p class="brand">Northfold</p>
-  <h1 id="lead">The holiday sale starts in</h1>
-  <div class="clock" role="timer" aria-label="Time until the sale starts">
-    <div class="unit"><span class="num" id="d">00</span><span class="label">days</span></div>
-    <div class="unit"><span class="num" id="h">00</span><span class="label">hours</span></div>
-    <div class="unit"><span class="num" id="m">00</span><span class="label">minutes</span></div>
-    <div class="unit"><span class="num" id="s">00</span><span class="label">seconds</span></div>
+  <p class="brand">APT Calgary</p>
+  <h1>Delivery zones</h1>
+  <p class="intro">Tap a zone on the map to see its delivery days, order cut-off and delivery window.</p>
+  <div class="map">
+    <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="APT Calgary delivery zones map" allowfullscreen></iframe>
   </div>
-  <p class="offer">Up to 40% off everything, November 27 to December 1.</p>
-  <div class="actions">
-    <a class="btn" href="https://example.com">Browse the sale preview</a>
-    <p class="note">Email subscribers get in 24 hours early.</p>
-  </div>
-  <section class="zones" aria-labelledby="zones-title">
-    <h2 id="zones-title">Delivery zones</h2>
-    <p>Tap a zone on the map to see its delivery days, order cut-off and delivery window.</p>
-    <div class="map">
-      <iframe src="https://www.google.com/maps/d/embed?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs&amp;ehbc=2E312F" title="Delivery zones map" loading="lazy" allowfullscreen></iframe>
-    </div>
-    <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs" target="_blank" rel="noopener">Open the map full screen</a></p>
-  </section>
+  <p class="map-link"><a href="https://www.google.com/maps/d/viewer?mid=1FAuNNzZ-qkC9PRoSXejRBYLP9yiGwJs" target="_blank" rel="noopener">Open the map full screen</a></p>
 </main>
-<script>
-(function () {
-  var target = new Date(2026, 10, 27, 0, 0, 0).getTime(); // Nov 27, 2026, viewer's local time
-  var els = ['d', 'h', 'm', 's'].map(function (id) { return document.getElementById(id); });
-  var lead = document.getElementById('lead');
-  var timer = null;
-  function pad(n) { return String(n).padStart(2, '0'); }
-  function tick() {
-    var diff = Math.max(0, target - Date.now());
-    var d = Math.floor(diff / 864e5); diff %= 864e5;
-    var h = Math.floor(diff / 36e5);  diff %= 36e5;
-    var m = Math.floor(diff / 6e4);   diff %= 6e4;
-    var s = Math.floor(diff / 1e3);
-    [d, h, m, s].forEach(function (v, i) { els[i].textContent = pad(v); });
-    if (Date.now() >= target) {
-      lead.textContent = 'The holiday sale is on now';
-      if (timer) clearInterval(timer);
-    }
-  }
-  tick();
-  if (Date.now() < target) timer = setInterval(tick, 1000);
-})();
-</script>
 </body>
 </html>
